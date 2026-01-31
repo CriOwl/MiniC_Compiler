@@ -254,5 +254,79 @@ namespace MiniC
 
             return -1;
         }
+
+        public int GetTokenLetra(string Lexema) // para todos los lexemas que son letras - Token letra
+        {
+            Palabra.Clear(); // vaciamos el contenedor palabra
+            #region Letras Mayúsculas
+            Palabra.Add("A", 350);
+            Palabra.Add("B", 351);
+            Palabra.Add("C", 352);
+            Palabra.Add("D", 353);
+            Palabra.Add("E", 354);
+            Palabra.Add("F", 355);
+            Palabra.Add("G", 356);
+            Palabra.Add("H", 357);
+            Palabra.Add("I", 358);
+            Palabra.Add("J", 359);
+            Palabra.Add("K", 360);
+            Palabra.Add("L", 361);
+            Palabra.Add("M", 362);
+            Palabra.Add("N", 363);
+            Palabra.Add("O", 364);
+            Palabra.Add("P", 365);
+            Palabra.Add("Q", 366);
+            Palabra.Add("R", 367);
+            Palabra.Add("S", 368);
+            Palabra.Add("T", 369);
+            Palabra.Add("U", 370);
+            Palabra.Add("V", 371);
+            Palabra.Add("W", 372);
+            Palabra.Add("X", 373);
+            Palabra.Add("Y", 374);
+            Palabra.Add("Z", 375);
+            #endregion
+
+            #region Letras Minúsculas
+            Palabra.Add("a", 400);
+            Palabra.Add("b", 401);
+            Palabra.Add("c", 402);
+            Palabra.Add("d", 403);
+            Palabra.Add("e", 404);
+            Palabra.Add("f", 405);
+            Palabra.Add("g", 406);
+            Palabra.Add("h", 407);
+            Palabra.Add("i", 408);
+            Palabra.Add("j", 409);
+            Palabra.Add("k", 410);
+            Palabra.Add("l", 411);
+            Palabra.Add("m", 412);
+            Palabra.Add("n", 413);
+            Palabra.Add("o", 414);
+            Palabra.Add("p", 415);
+            Palabra.Add("q", 416);
+            Palabra.Add("r", 417);
+            Palabra.Add("s", 418);
+            Palabra.Add("t", 419);
+            Palabra.Add("u", 420);
+            Palabra.Add("v", 421);
+            Palabra.Add("w", 422);
+            Palabra.Add("x", 423);
+            Palabra.Add("y", 424);
+            Palabra.Add("z", 425);
+            #endregion
+
+            #region Símbolo adicional
+            Palabra.Add("_", 426);
+            #endregion
+
+            foreach (KeyValuePair<string, int> Lex in Palabra)
+            {
+                if (Lexema == Lex.Key)
+                    return Lex.Value;
+            }
+
+            return -1;
+        }
     }
 }

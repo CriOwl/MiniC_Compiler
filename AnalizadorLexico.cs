@@ -35,6 +35,7 @@ namespace MiniC
         int Cont = 0; //variable global que cuenta en que posición del archivo me encuentro
         int Linea = 1; //variable global para el numero de linea
         string Lexema = string.Empty; //vacía el lexema cada que se completa un token
+        public bool ErrorLexico = false;
 
         protected int GetAlfabetoPalabra(char c)
         {
@@ -48,21 +49,18 @@ namespace MiniC
         }
         protected int GetAlfabetoNumero(char c)
         {
-            if (D.Contains(c)) // si L le contiene a c significa que es letra
-                return 0; 
-            else if (c == '+')
-                return 1; 
-            else if (c == '-')
-                return 2;
-            else if (c == '=')
-                return 3;
-            else if (c == '.')
-                return 4;
-            else if (c == 'E')
-                return 5;
-            else if (c == 'e')
-                return 6;
-            return -1; // si c no coincide con ninguno retorna -1
+            if (c == '0') return 0;
+            if (c >= '1' && c <= '7') return 1;
+            if (c == '8' || c == '9') return 2;
+            if (c == '+') return 3;
+            if (c == '-') return 4;
+            if (c == '.') return 5;
+            if (c == 'e' || c == 'E') return 6;
+            if (c == 'x' || c == 'X') return 7;
+            if ("abcdfABCDF".Contains(c)) return 8; // Incluye 'f/F' como dígito hex y sufijo
+            if (c == 'u' || c == 'U') return 9;     // Sufijo Unsigned
+            if (c == 'l' || c == 'L') return 10;    // Sufijo Long
+            return -1;
         }
         protected void AutomataPalabras(string Archivo)
         {
