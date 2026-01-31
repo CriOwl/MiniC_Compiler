@@ -35,13 +35,26 @@ namespace MiniC
                     "Lexema: " + LstTokens[i].Lexema + "    " +
                     "Token: " + LstTokens[i].Token + "\n";
 
-            // PARA EL ANALIZADOR SINTÁCTICO
+            //Verificar si hubo errores léxicos antes de continuar
+            if (AL.ErrorLexico)
+            {
+                rtbEditor.Text += "\n [!] ERROR: Análisis léxico fallido. Corrige los errores antes de continuar.\n";
+                return; // Detenemos la ejecución aquí
+            }
+
+            // Iniciamos el análisis sintáctico
             AnalizadorSintactico AS = new AnalizadorSintactico();
             AS.AnalisisSintactico(LstTokens);
 
-            rtbEditor.Text +=
-                "\n\n---------------------------------------\n";
-            rtbEditor.Text += "Análisis sintáctico completado con éxito.";
+            if (AS.Compilacion)
+            {
+                rtbEditor.Text += "\n\n--------------------------------------------------------------------\n";
+                rtbEditor.Text += " >>> Análisis léxico y sintáctico completado con éxito.\n";
+            }
+            else
+            {
+                rtbEditor.Text += "\n [!] ERROR: El análisis sintáctico encontró errores.\n";
+            }
         }
 
         private void OpcNuevo_Click(object sender, EventArgs e)
