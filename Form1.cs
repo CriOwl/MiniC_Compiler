@@ -38,10 +38,6 @@ namespace MiniC
             // PARA EL ANALIZADOR SINTÁCTICO
             AnalizadorSintactico AS = new AnalizadorSintactico();
             AS.AnalisisSintactico(LstTokens);
-
-            rtbEditor.Text +=
-                "\n\n---------------------------------------\n";
-            rtbEditor.Text += "Análisis sintáctico completado con éxito.";
         }
 
         private void OpcNuevo_Click(object sender, EventArgs e)
