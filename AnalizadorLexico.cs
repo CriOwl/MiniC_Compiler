@@ -227,6 +227,32 @@ namespace MiniC
                     return;
                 }
 
+                // COMENTARIOS
+                if (BiLexema == "//")
+                {
+                    Cont++; // Consumir segundo /
+                    while (Cont < Archivo.Length && Archivo[Cont] != '\n')
+                    {
+                        Cont++;
+                    }
+                    return; // No generar token
+                }
+                if (BiLexema == "/*")
+                {
+                    Cont++; // Consumir *
+                    while (Cont + 1 < Archivo.Length)
+                    {
+                        if (Archivo[Cont] == '*' && Archivo[Cont + 1] == '/')
+                        {
+                            Cont += 2; // Consumir */
+                            return;
+                        }
+                        if (Archivo[Cont] == '\n') Linea++;
+                        Cont++;
+                    }
+                    return;
+                }
+
                 if (UL.GetTokenSimbolo(BiLexema) != -1)
                 {
                     // It matches a 2-char token

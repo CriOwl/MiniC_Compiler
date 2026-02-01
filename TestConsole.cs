@@ -147,8 +147,8 @@ int main(void) {
                 i++;
             }
             */
-            Console.WriteLine("[TEST TARGET] Character Constants");
-            TestOne("void main() { char op = '+'; if (op == '+') return 1; }");
+            Console.WriteLine("[TEST TARGET] Comments");
+            TestOne("// Line comment\nvoid main() { /* Block \n Comment */ int a = 1; }");
         }
 
         static void TestOne(string input)
